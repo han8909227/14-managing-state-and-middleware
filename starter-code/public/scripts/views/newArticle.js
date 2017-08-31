@@ -4,7 +4,10 @@ var app = app || {};
 (function(module) {
   const newArticle = {};
 
-  // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  // DONE: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  //This function initilize the /new page by showing the form(input fields) and hides the export field, it is called at the bottom of this script.
+  //This function calls the newArticle.create function when there is change on the form field to create a new instance of Article and render it onto the DOM using handlebars
+  //This function also calls the newArticle.submit function when the form is submitted which will render the new Article onto the export-field
   newArticle.initNewArticlePage = function() {
     $('.tab-content').show();
     $('#export-field').hide();
@@ -32,8 +35,8 @@ var app = app || {};
       this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
       this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)';
       this.body = marked(this.body);
-
       return template(this);
+
     };
 
     $('#articles').append(formArticle.render('#article-template'));
