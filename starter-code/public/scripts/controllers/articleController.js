@@ -4,8 +4,8 @@ var app = app || {};
 (function(module) {
   const articleController = {};
 
-  // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
-  // (put your response in a comment here)
+  // DONE: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  // this function calls articleView.index with articles property of the 'ctx' or 'context' object as argument. from there, Articles (or ctx.articles) are passed through the Handlebars templating and rendered to the dom.
   articleController.index = (ctx) => app.articleView.index(ctx.articles);
 
   // REVIEW: Middleware for grabbing one article by ID:
@@ -15,8 +15,8 @@ var app = app || {};
       next();
     };
 
-    // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
-    // (put your response in a comment here)
+    // DONE: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+    // findWhere takes 3 arguments and runs a SQL query on the table field 'article_id' for the value defined in ctx.params.article_id, with articleData as callback. Article.findWhere is defined in article.js, and the handler for this route is defined in server.js, where our SQL query is concatenated and returned.
     app.Article.findWhere('article_id', ctx.params.article_id, articleData);
   };
 
